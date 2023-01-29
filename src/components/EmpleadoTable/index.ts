@@ -1,0 +1,1 @@
+export { EmpleadoTable } from './EmpleadoTable'
