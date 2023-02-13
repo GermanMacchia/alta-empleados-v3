@@ -1,2 +1,6 @@
 export { EmpleadoForm } from './EmpleadoForm'
 export { TextInputBlock } from './TextInputBlock'
+export { AreaSelect } from './AreaSelect'
+export { IsDevCheckbox } from './IsDevCheckbox'
+export { SelectImage } from './SelectImage'
+export { DataInputBlock } from './DataInputBlock'

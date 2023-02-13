@@ -1,8 +1,8 @@
 import { FC } from 'react'
+import { Input } from '../../shared'
 import { AreaSelect } from './AreaSelect'
 import { Label, styles } from './styles'
 import { Box, Typography } from '@mui/material'
-import { Input } from '../../shared/Input/Input'
 
 interface Props {
   trigger: boolean
@@ -39,7 +39,7 @@ export const DataInputBlock: FC<Props> = ({ trigger }) => {
       <Label>
         <Box sx={styles.container.form.tag}>
           <Typography fontWeight={400} display={'inline-block'}>
-            Fecha Nacimiento &nbsp;
+            F. de Nac. &nbsp;
           </Typography>
           <Typography
             fontWeight={400}

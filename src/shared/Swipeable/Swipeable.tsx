@@ -24,7 +24,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 const Puller = styled(Box)(({ theme }) => ({
   width: 30,
-  height: 6,
+  height: 8,
   backgroundColor: theme.palette.mode === 'light' ? grey[300] : grey[900],
   borderRadius: 3,
   position: 'absolute',
@@ -49,7 +49,7 @@ export const Swipeable: FC<Props> = ({ children }) => {
       <Global
         styles={{
           '.MuiDrawer-root > .MuiPaper-root': {
-            height: `calc(50% - ${drawerBleeding}px)`,
+            height: `calc(80% - ${drawerBleeding}px)`,
             overflow: 'visible',
           },
         }}

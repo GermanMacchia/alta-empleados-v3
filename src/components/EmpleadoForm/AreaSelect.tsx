@@ -12,12 +12,18 @@ import {
 } from '@mui/material'
 
 interface Props {
-  trigger: boolean
+  trigger?: boolean
+  isDisabled?: boolean
+  initialValue?: string
 }
 
-export const AreaSelect: FC<Props> = ({ trigger }) => {
+export const AreaSelect: FC<Props> = ({
+  trigger,
+  isDisabled,
+  initialValue = '',
+}) => {
   const { areas: listaAreas } = useEmpleadoForm()
-  const [area, setArea] = useState('')
+  const [area, setArea] = useState(initialValue)
   const {
     register,
     setError,
@@ -29,8 +35,9 @@ export const AreaSelect: FC<Props> = ({ trigger }) => {
   }
 
   useEffect(() => {
-    if (isSubmitted && area === '')
+    if (isSubmitted && area === '') {
       setError('area', { type: 'custom', message: 'requerido' })
+    }
     setArea('')
   }, [trigger])
 
@@ -41,16 +48,22 @@ export const AreaSelect: FC<Props> = ({ trigger }) => {
       sx={{ minWidth: 120 }}
       size='medium'>
       <Select
+        disabled={isDisabled}
         MenuProps={styles.container.form.select.__menuprops}
         {...register('area', { required: 'requerido' })}
-        sx={{ color: area ? 'whitesmoke' : 'grey' }}
+        sx={{ color: area ? '#242424' : 'grey' }}
         variant='standard'
         color='success'
         onChange={handleChange}
         defaultValue={''}
+        value={initialValue}
         displayEmpty>
-        <MenuItem value='' disabled sx={{ color: 'text.disabled' }}>
-          Área
+        <MenuItem value='' disabled>
+          {initialValue
+            ? listaAreas
+                .find((area: any) => area._id === initialValue)
+                ?.nombre.toUpperCase()
+            : 'Área'}
         </MenuItem>
         {listaAreas &&
           listaAreas.map((area: Area) => (
@@ -62,7 +75,11 @@ export const AreaSelect: FC<Props> = ({ trigger }) => {
       {errors.area && (
         <Typography
           variant='caption'
-          sx={{ position: 'absolute', margin: '-45px 0px' }}
+          sx={{
+            position: 'absolute',
+            margin: { xs: '-3.5vh 0vw', md: '-4.5vh 0vw' },
+            right: 0,
+          }}
           color='#fc746d'
           className='errorText'>
           {(errors as any).area.message}

@@ -1,7 +1,7 @@
 import { FC } from 'react'
+import { Input } from '../../shared'
 import { Label, styles } from './styles'
 import { Box, Typography } from '@mui/material'
-import { Input } from '../../shared/Input/Input'
 
 interface Props {
   nombreActivo?: boolean

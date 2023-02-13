@@ -1,5 +1,5 @@
 import { EmpleadoForm } from '../components/EmpleadoForm'
-import { EmpleadoTable } from '../components/EmpleadoTable'
+import { Table } from '../components/Table'
 import { Swipeable } from '../shared/Swipeable/Swipeable'
 import { WithFormProvider } from '../shared/WithFormProvider/WithFormProvider'
 import { useEmpleadoForm } from '../hooks/useEmpleadoForm'
@@ -9,6 +9,49 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { useState, useEffect } from 'react'
 import { Area } from '../interfaces/area.interface'
 import { Empleado } from '../interfaces/empleado.interface'
+import { GridColDef } from '@mui/x-data-grid'
+
+const columns: GridColDef[] = [
+  {
+    field: 'dni',
+    headerName: 'Dni',
+    type: 'number',
+    width: 100,
+  },
+  {
+    field: 'nombre',
+    headerName: 'Nombre',
+    width: 90,
+    editable: false,
+  },
+  {
+    field: 'apellido',
+    headerName: 'Apellido',
+    width: 100,
+    editable: false,
+  },
+  {
+    field: 'area',
+    headerName: 'Area',
+    width: 80,
+    editable: false,
+  },
+  {
+    field: 'esDesarrollador',
+    headerName: 'Dev',
+    type: 'boolean',
+    width: 50,
+    editable: false,
+    sortable: false,
+  },
+  {
+    field: 'descripcion',
+    headerName: 'Descripción',
+    type: 'string',
+    width: 150,
+    editable: false,
+  },
+]
 
 export const Empleados = () => {
   const { altaEmpleado } = useEmpleadoForm()
@@ -46,7 +89,7 @@ export const Empleados = () => {
 
   return (
     <Box sx={{ width: '85vw' }}>
-      <EmpleadoTable empleados={listaEmpleados} />
+      <Table data={listaEmpleados} columns={columns} />
       <Swipeable children={form()} />
     </Box>
   )

@@ -1,11 +1,12 @@
 import { FC, useEffect, useState } from 'react'
-import { Typography, Box, CircularProgress, Button } from '@mui/material'
+import { Typography, Box, CircularProgress, Button, Paper } from '@mui/material'
 import { Container } from '@mui/system'
 import { styles } from './styles'
 import { useFormContext } from 'react-hook-form'
 import { TextInputBlock } from './TextInputBlock'
 import { DataInputBlock } from './DataInputBlock'
 import { IsDevCheckbox } from './IsDevCheckbox'
+import { SelectImage } from './SelectImage'
 
 interface Props {
   isLoading: boolean
@@ -23,22 +24,30 @@ export const EmpleadoForm: FC<Props> = ({ isLoading }) => {
   }, [isLoading])
 
   return (
-    <Container sx={styles.container} maxWidth='sm'>
-      <Box
-        display='flex'
-        alignItems='flex-start'
-        justifyContent='space-between'></Box>
-      <Box sx={styles.container.form}>
-        <input {...register('formType')} type='hidden' value='AltaEmpleado' />
-        <Box sx={styles.container.form.inputData}>
-          <TextInputBlock />
-          <DataInputBlock trigger={trigger} />
+    <Container sx={styles.container}>
+      <Paper elevation={0} sx={styles.container.paper}>
+        <Box display='flex' alignItems='flex-start'>
+          <Box>
+            <Typography sx={styles.container.title}>Alta Empleado</Typography>
+            <Typography variant='caption' color='GrayText'>
+              Introduzca los datos del empleado
+            </Typography>
+          </Box>
         </Box>
-        <Box
-          display='flex'
-          alignItems='flex-start'
-          justifyContent='space-between'>
-          <IsDevCheckbox trigger={trigger} />
+        <Box sx={styles.container.form}>
+          <input {...register('formType')} type='hidden' value='AltaEmpleado' />
+          <Box sx={styles.container.form.inputData}>
+            <TextInputBlock />
+            <DataInputBlock trigger={trigger} />
+          </Box>
+          <Box display='flex' alignItems='center' gap={{ xs: 1, md: 6 }}>
+            <Box width='50%'>
+              <IsDevCheckbox trigger={trigger} />
+            </Box>
+            <Box width='50%'>
+              <SelectImage trigger={trigger} />
+            </Box>
+          </Box>
           <Button
             variant='contained'
             type='submit'
@@ -47,7 +56,7 @@ export const EmpleadoForm: FC<Props> = ({ isLoading }) => {
             {isLoading ? <CircularProgress /> : 'Enviar'}
           </Button>
         </Box>
-      </Box>
+      </Paper>
     </Container>
   )
 }

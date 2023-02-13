@@ -1,1 +1,0 @@
-export { EmpleadoTable } from './EmpleadoTable'

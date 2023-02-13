@@ -4,22 +4,26 @@ const ITEM_PADDING_TOP = 20
 
 export const styles = {
   container: {
-    margin: { xs: '5px 0', md: '15vh auto' },
-    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '10px auto',
+    padding: 0,
+    '& .MuiPaper-rounded': {
+      borderRadius: 0,
+    },
+    paper: {
+      padding: '20px 20px 10px',
+      width: { xs: '100%', md: '430px' },
+    },
     title: {
       fontWeight: '600',
       fontSize: '20px',
     },
-    subtitle: {
-      opacity: '0.7',
-      marginTop: '1vh',
-      marginBottom: '3vh',
-    },
     form: {
       display: 'flex',
+      marginTop: 0.5,
       flexDirection: 'column',
-      width: '100%',
-      gap: { xs: '3vh', md: '1.4vh' },
+      gap: { xs: 3, md: 1, xl: 3 },
       inputData: {
         display: 'flex',
         flexDirection: 'row',
@@ -30,10 +34,9 @@ export const styles = {
       },
       submit: {
         color: '#fff',
-        width: '25%',
         textTransform: 'none',
         height: '45px',
-        borderRadius: '8px',
+        marginBottom: '10px',
       },
       select: {
         __menuprops: {
