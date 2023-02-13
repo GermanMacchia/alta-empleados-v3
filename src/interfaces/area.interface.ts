@@ -1,4 +1,4 @@
 export interface Area {
-	_id?: string
-	nombre: string
+  _id?: string
+  nombre: string
 }

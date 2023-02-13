@@ -7,9 +7,8 @@ import Box from '@mui/material/Box'
 import { useEmpleadoList } from '../hooks/useEmpleadoList'
 import CircularProgress from '@mui/material/CircularProgress'
 import { useState, useEffect } from 'react'
-import { Area } from '../interfaces/area.interface'
-import { Empleado } from '../interfaces/empleado.interface'
 import { GridColDef } from '@mui/x-data-grid'
+import { Area, Empleado } from '../interfaces'
 
 const columns: GridColDef[] = [
   {

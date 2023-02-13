@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Box from '@mui/material/Box'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
-import { Area } from '../../interfaces/area.interface'
 import { Empleado } from '../../interfaces/empleado.interface'
+import { Area } from '../../interfaces'
 
 interface Props {
   data: Empleado[] | Area[]
