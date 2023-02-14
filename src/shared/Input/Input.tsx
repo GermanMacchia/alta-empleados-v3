@@ -1,6 +1,6 @@
 import { Box, Typography, TextField } from '@mui/material/'
 import { useFormContext } from 'react-hook-form'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useMediaQuery } from '@mui/material'
 
 interface Props {
@@ -32,7 +32,7 @@ export const Input: FC<Props> = ({
         type={type}
         InputProps={{
           style: {
-            color: matches ? 'whitesmoke' : 'black',
+            color: 'black',
           },
         }}
         disabled={disabled}

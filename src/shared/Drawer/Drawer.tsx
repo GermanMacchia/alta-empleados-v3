@@ -16,11 +16,14 @@ import { useTheme } from '@mui/material/styles'
 import { AppBar, DrawerComponent, DrawerHeader, styles } from './styles'
 import { buttons } from './buttons'
 import { useNavigate } from 'react-router'
+import { useAuthForm } from '../../hooks/useAuthForm'
 
 export const Drawer = () => {
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
   const navigate = useNavigate()
+  const { signOut } = useAuthForm()
+
   const handleDrawerOpen = () => {
     setOpen(true)
   }
@@ -64,7 +67,9 @@ export const Drawer = () => {
           {buttons.map(btn => (
             <ListItem key={btn.label} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
-                onClick={() => navigate(btn.link)}
+                onClick={
+                  btn.label === 'Log Out' ? signOut : () => navigate(btn.link)
+                }
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -87,7 +92,6 @@ export const Drawer = () => {
           ))}
         </List>
         <Divider />
-        <List></List>
       </DrawerComponent>
       <Box component='main'>
         <DrawerHeader sx={styles.banner} />

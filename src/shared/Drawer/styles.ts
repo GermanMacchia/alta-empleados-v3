@@ -2,10 +2,10 @@ import MuiDrawer from '@mui/material/Drawer'
 import { styled, Theme, CSSObject } from '@mui/material/styles'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import banner from '../../assets/banner.jpg'
-
+import cover from '../../assets/cover.jpg'
 const styles = {
   banner: {
-    height: { xs: '6.5vh', md: '10vh' },
+    height: { xs: '6.5vh', md: '9vh' },
     backgroundImage: `url(${banner})`,
     backgroundSize: 'cover',
   },
@@ -70,6 +70,9 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: prop => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
+  backgroundImage: `url(${cover})`,
+  backgroundSize: 'cover',
+  color: '#293065',
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,

@@ -1,5 +1,5 @@
 import { api } from './api'
-import { Empleado } from '../interfaces/empleado.interface'
+import { Empleado } from '../interfaces/'
 
 export const postAvatar = async (empleado: Empleado, file: File) => {
   const formData = new FormData()

@@ -11,7 +11,7 @@ interface Props {
 export const Table: FC<Props> = ({ data, columns }) => {
   if (data?.length === 0) return <h2>Tabla sin datos</h2>
   return (
-    <Box sx={{ height: '87vh', widht: '500px' }}>
+    <Box sx={{ height: '83vh', widht: '500px' }}>
       <DataGrid
         rows={data}
         columns={columns}

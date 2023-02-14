@@ -1,5 +1,5 @@
 import { api } from './api'
-import { User } from '../interfaces/user.interface'
+import { User } from '../interfaces'
 
 export const authSignin = async (usuario: User) => {
   const { data } = await api({
