@@ -6,9 +6,10 @@ import { useEmpleadoForm } from '../hooks/useEmpleadoForm'
 import Box from '@mui/material/Box'
 import { useEmpleadoList } from '../hooks/useEmpleadoList'
 import CircularProgress from '@mui/material/CircularProgress'
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { GridColDef } from '@mui/x-data-grid'
 import { Area, Empleado } from '../interfaces'
+import { capitalize } from '../helpers'
 
 const columns: GridColDef[] = [
   {
@@ -18,21 +19,15 @@ const columns: GridColDef[] = [
     width: 100,
   },
   {
-    field: 'nombre',
-    headerName: 'Nombre',
-    width: 90,
-    editable: false,
-  },
-  {
-    field: 'apellido',
-    headerName: 'Apellido',
-    width: 100,
+    field: 'nyap',
+    headerName: 'NyAP',
+    width: 150,
     editable: false,
   },
   {
     field: 'area',
     headerName: 'Area',
-    width: 80,
+    width: 120,
     editable: false,
   },
   {
@@ -68,12 +63,16 @@ export const Empleados = () => {
     return areas.find(area => area._id === id)?.nombre
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (empleados.data?.length && areas.data?.length) {
       setListaEmpleados(
         empleados.data.map((empleado: Empleado) => ({
           ...empleado,
-          area: getAreaName(areas.data, empleado.area),
+
+          nyap: `${capitalize(empleado.nombre)} ${capitalize(
+            empleado.apellido
+          )}`,
+          area: getAreaName(areas.data, empleado.area)?.toUpperCase(),
         }))
       )
     }

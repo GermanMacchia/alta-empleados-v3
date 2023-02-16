@@ -17,7 +17,7 @@ export const SignIn = ({ isLoading }: Props) => {
 
   return (
     <Box sx={styles.container}>
-      <Typography variant='h4' color='aliceblue'>
+      <Typography variant='h4' color='#2d306d'>
         Sign In
       </Typography>
       <Box sx={styles.container.form}>

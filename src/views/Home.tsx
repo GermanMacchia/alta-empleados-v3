@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
 export const Home = () => {
-  const [_, match] = useMatches()
+  const [match] = useMatches()
   const condition = match.pathname === '/' || match.pathname === '/registro'
   const navigate = useNavigate()
 
@@ -13,9 +13,6 @@ export const Home = () => {
     const token = localStorage.getItem('user')
     if (!condition && !token) {
       navigate('/')
-    }
-    if (condition && token) {
-      navigate('/home')
     }
   })
 

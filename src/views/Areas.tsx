@@ -7,17 +7,19 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { GridColDef } from '@mui/x-data-grid'
 import { AreaForm } from '../components/AreaForm/AreaForm'
 import { useAreaForm } from '../hooks/useAreaForm'
+import { useState, useLayoutEffect } from 'react'
 
 const columns: GridColDef[] = [
   {
     field: 'nombre',
     headerName: 'Área',
     type: 'text',
-    width: 120,
+    width: 150,
   },
 ]
 
 export const Areas = () => {
+  const [listaAreas, setListaAreas] = useState([])
   const { altaArea } = useAreaForm()
   const { areas } = useEmpleadoList()
 
@@ -28,6 +30,19 @@ export const Areas = () => {
     />
   )
 
+  useLayoutEffect(() => {
+    if (areas.data) {
+      setListaAreas(
+        areas.data.map((ele: any) => {
+          return {
+            ...ele,
+            nombre: ele.nombre.toUpperCase(),
+          }
+        })
+      )
+    }
+  }, [areas.data])
+
   if (!areas.data?.length)
     return (
       <Box sx={{ margin: '20px 33%' }}>
@@ -37,7 +52,7 @@ export const Areas = () => {
 
   return (
     <Box sx={{ width: '85vw' }}>
-      <Table data={areas.data} columns={columns} />
+      <Table data={listaAreas} columns={columns} />
       <Swipeable children={form()} />
     </Box>
   )

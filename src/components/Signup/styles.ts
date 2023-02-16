@@ -1,9 +1,12 @@
 import styled from '@emotion/styled'
+import banner from '../../assets/banner.jpg'
+
 export const styles = {
   container: {
     width: { xs: 300, md: 320 },
     border: '5px inset #9ce4d9',
-    background: '#80364f',
+    backgroundImage: `url(${banner})`,
+    backgroundSize: 'cover',
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
@@ -11,11 +14,12 @@ export const styles = {
     gap: 2,
     alignItems: 'center',
     justyfyContent: 'space-between',
-    margin: { xs: '5vh auto', md: '1vh auto' },
+    margin: { xs: '10vh auto', md: '25vh auto' },
     padding: '4vh',
     form: {
       width: 270,
       background: 'whitesmoke',
+      border: '1px solid #2d306d',
       padding: 3,
       display: 'flex',
       flexDirection: 'column',

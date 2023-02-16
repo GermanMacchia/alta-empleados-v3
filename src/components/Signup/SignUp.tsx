@@ -14,7 +14,7 @@ export const SignUp = ({ isLoading }: Props) => {
 
   return (
     <Box sx={styles.container}>
-      <Typography variant='h4' color='aliceblue'>
+      <Typography variant='h4' color='#2d306d'>
         Sign Up
       </Typography>
       <Box sx={styles.container.form}>
