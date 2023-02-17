@@ -5,6 +5,7 @@ import { Area, Empleado } from '../../interfaces'
 import { OptionButtons } from './OptionButtons'
 import { useTableFilter } from '../../hooks/useTableFilter'
 import { InfoDrawer } from '../InfoDrawer/InfoDrawer'
+import { SearchDrawer } from './SearchDrawer'
 
 interface Props {
   data: Empleado[] | Area[]
@@ -26,16 +27,19 @@ export const Table: FC<Props> = ({ data, columns }) => {
 
   return (
     <>
-      {columns[0].field === 'dni' && (
-        <OptionButtons
-          handleFilter={handleFilter}
-          optionsActive={optionsActive}
-        />
-      )}
+      <Box display='flex' justifyContent='center' m={1}>
+        {columns[0].field === 'dni' && (
+          <OptionButtons
+            handleFilter={handleFilter}
+            optionsActive={optionsActive}
+          />
+        )}
+        <SearchDrawer />
+      </Box>
       <Box sx={{ height: '75vh' }}>
         <DataGrid
-          rows={data}
           columns={filteredColumns}
+          rows={data}
           getRowId={row => row._id as string}
           pageSize={8}
           rowsPerPageOptions={[8]}

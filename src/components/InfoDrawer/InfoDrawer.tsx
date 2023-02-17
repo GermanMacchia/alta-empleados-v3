@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { Empleado } from '../../interfaces/empleado.interface'
 import { Typography } from '@mui/material'
 import { capitalize } from '../../helpers'
+import { AvatarContainer } from './AvatarContainer'
 
 interface Props {
   handleOpen: (isOpen: boolean) => any
@@ -14,20 +15,27 @@ interface Props {
 export const InfoDrawer: FC<Props> = ({ handleOpen, isOpen, info }) => {
   const list = () => (
     <Box
-      sx={{ width: 280, padding: '100px 10px' }}
+      sx={{
+        width: 340,
+        padding: '100px 10px',
+      }}
       role='presentation'
       onClick={() => handleOpen(!isOpen)}>
+      <AvatarContainer empleado={info as Empleado} />
       <Typography variant='h5'>
         {`${capitalize(info?.nombre as string)} 
         ${capitalize(info?.apellido as string)}`}
       </Typography>
-
       <Typography variant='body1'>{info?.area.toUpperCase()}</Typography>
     </Box>
   )
 
   return (
-    <Drawer anchor={'left'} open={isOpen} onClose={() => handleOpen(!isOpen)}>
+    <Drawer
+      sx={{ '& .MuiPaper-root': { height: '100%' } }}
+      anchor={'left'}
+      open={isOpen}
+      onClose={() => handleOpen(!isOpen)}>
       {list()}
     </Drawer>
   )

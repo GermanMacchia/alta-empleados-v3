@@ -2,6 +2,7 @@ import InfoIcon from '@mui/icons-material/Info'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import RecentActorsIcon from '@mui/icons-material/RecentActors'
 import LogoutIcon from '@mui/icons-material/Logout'
+import SearchIcon from '@mui/icons-material/Search'
 
 export const buttons = [
   {
